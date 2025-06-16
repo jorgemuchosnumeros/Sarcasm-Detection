@@ -1,0 +1,6 @@
+{
+    "num_heads": 8,
+    "ff_dim": 128,
+    "dropout_rate": 0.15596058983954625,
+    "learning_rate": 4.3906756171248585e-05
+}
