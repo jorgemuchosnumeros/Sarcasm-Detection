@@ -19,6 +19,8 @@ model = load_model("sarcasm_model.keras")
 path = kagglehub.dataset_download("danofer/sarcasm")
 dataset = pd.read_csv(path + "/train-balanced-sarcasm.csv").sample(100000)
 
+dataset["text"] = dataset["parent_comment"] + "[SEP]" + dataset["comment"]
+
 def custom_standardization(input_text):
     lowercase = tf.strings.lower(input_text)
     return tf.strings.regex_replace(lowercase, r"[^a-zA-Z0-9\s]", "")
