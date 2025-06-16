@@ -76,7 +76,7 @@ elif page == "Dataset Visualization":
     st.plotly_chart(fig1)
 
     st.subheader("Token Length Distribution")
-    data["length"] = data["text"].values.apply(lambda x: len(x.split()))
+    data["length"] = [len(x.split()) for x in data["text"].values]
     fig2 = px.histogram(data, x="length", nbins=50, title="Token Length Histogram")
     st.plotly_chart(fig2)
 
