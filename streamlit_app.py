@@ -76,12 +76,14 @@ elif page == "Dataset Visualization":
     st.plotly_chart(fig1)
 
     st.subheader("Token Length Distribution")
+    data["text"] = data["text"].apply(lambda x: str(x))
     data["length"] = data["text"].apply(lambda x: len(str(x).split()))
 
     fig2 = px.histogram(data, x="length", nbins=50, title="Token Length Histogram")
     st.plotly_chart(fig2)
 
     st.subheader("Word Cloud")
+    
     all_text = " ".join(data["text"].tolist()).replace("[SEP]", " ")
     wc = WordCloud(width=800, height=400).generate(all_text)
     st.image(wc.to_array())
